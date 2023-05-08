@@ -45,8 +45,8 @@ class MainWindow(QMainWindow):
 
         # APP NAME
         # ///////////////////////////////////////////////////////////////
-        title = "PyDracula - Modern GUI"
-        description = "PyDracula APP - Theme with colors based on Dracula for Python."
+        title = "BJTU_VSR_Demo - Modern GUI via PyDracula"
+        description = "BJTU_VSR_Demo - Modern GUI via PyDracula"
         # APPLY TEXTS
         self.setWindowTitle(title)
         widgets.titleRightInfo.setText(description)
@@ -70,7 +70,9 @@ class MainWindow(QMainWindow):
         widgets.btn_home.clicked.connect(self.buttonClick)
         widgets.btn_widgets.clicked.connect(self.buttonClick)
         widgets.btn_new.clicked.connect(self.buttonClick)
-        widgets.btn_save.clicked.connect(self.buttonClick)
+        widgets.btn_save.clicked.connect(self.buttonClick)        
+        widgets.btn_theme.clicked.connect(self.buttonClick) # new to change theme color
+        
 
         # EXTRA LEFT BOX
         def openCloseLeftBox():
@@ -89,16 +91,29 @@ class MainWindow(QMainWindow):
 
         # SET CUSTOM THEME
         # ///////////////////////////////////////////////////////////////
-        useCustomTheme = False
-        themeFile = "themes\py_dracula_light.qss"
+        # only for zip exe files with forzen absPath setting
+        if getattr(sys, 'frozen', False):
+            # frozen
+            absPath = os.path.dirname(os.path.abspath(sys.executable))
+        elif __file__:
+            # unfrozen
+            absPath = os.path.dirname(os.path.abspath(__file__))
+
+        # load and apply style sheet (Default)    
+        useCustomDarkTheme = True
+        self.useCustomDarkTheme = useCustomDarkTheme
+        self.absPath = absPath
+        themeFile = os.path.abspath(os.path.join(absPath, "themes\py_dracula_dark.qss"))
 
         # SET THEME AND HACKS
-        if useCustomTheme:
+        if useCustomDarkTheme:
             # LOAD AND APPLY STYLE
             UIFunctions.theme(self, themeFile, True)
 
             # SET HACKS
             AppFunctions.setThemeHack(self)
+            # initialization
+            self.useCustomDarkTheme = not self.useCustomDarkTheme
 
         # SET HOME PAGE AND SELECT MENU
         # ///////////////////////////////////////////////////////////////
@@ -131,6 +146,21 @@ class MainWindow(QMainWindow):
             widgets.stackedWidget.setCurrentWidget(widgets.new_page) # SET PAGE
             UIFunctions.resetStyle(self, btnName) # RESET ANOTHERS BUTTONS SELECTED
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet())) # SELECT MENU
+
+        # change theme color
+        if btnName == "btn_theme":
+            if self.useCustomDarkTheme:
+                themeFile = os.path.abspath(os.path.join(self.absPath, "themes\py_dracula_dark.qss"))
+                UIFunctions.theme(self, themeFile, True)
+                # set hacks
+                AppFunctions.setThemeHack(self)
+                self.useCustomDarkTheme = False
+            else:
+                themeFile = os.path.abspath(os.path.join(self.absPath, "themes\py_dracula_light.qss"))
+                UIFunctions.theme(self, themeFile, True)
+                # set hacks
+                AppFunctions.setThemeHack(self)
+                self.useCustomDarkTheme = True
 
         if btnName == "btn_save":
             print("Save BTN clicked!")

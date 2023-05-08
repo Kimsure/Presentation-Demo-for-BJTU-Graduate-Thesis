@@ -206,8 +206,8 @@ class UIFunctions(MainWindow):
 
     # IMPORT THEMES FILES QSS/CSS
     # ///////////////////////////////////////////////////////////////
-    def theme(self, file, useCustomTheme):
-        if useCustomTheme:
+    def theme(self, file, useCustomDarkTheme):
+        if useCustomDarkTheme:
             str = open(file, 'r').read()
             self.ui.styleSheet.setStyleSheet(str)
 
