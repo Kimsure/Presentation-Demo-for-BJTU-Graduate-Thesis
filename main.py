@@ -233,15 +233,18 @@ class MainWindow(QMainWindow):
         # CHOOSER MEDIA
         if btnName == "btn_filechooser":
             curPath = QDir.currentPath() # present working directory
+            # Normalie the chinese Path to avoid the error, still not work however #TODO
+            # curPath = curPath.replace("/", "\\")
+            # curPath1 = QUrl.fromLocalFile(os.path.normpath(curPath))
             title = "Open Video" 
             filt = "video files(*.wmv *avi *.mp4 *.mov);;all files(*.*)" # filter for files
             fileName, flt = QFileDialog.getOpenFileName(self, title, curPath, filt)
             if fileName == "":
                 return "no files selected"
             # extra files (Just for Demo and not recommended for illustration via this trick)
-            fileName2 = curPath + "/videos/EDVR_1.mp4"
-            fileName3 = curPath + "/videos/TCNet_1.mp4"
-            fileName4 = curPath + "/videos/KSNet_1.mp4"
+            fileName2 = curPath + "/videos/Result000_LR_x264.mp4"
+            fileName3 = curPath + "/videos/TCNet_Result000.mp4"
+            fileName4 = curPath + "/videos/KSNet_Result000.mp4"
             # label name
             self.ui.videolabel_1.setText("LRVideo")
             self.ui.videolabel_2.setText("Model_EDVR")
