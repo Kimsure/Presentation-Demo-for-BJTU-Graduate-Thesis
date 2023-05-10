@@ -20,7 +20,8 @@ import platform
 from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtMultimedia import QMediaPlayer, QAudioOutput
 from PySide6.QtCore import QUrl, QFileInfo, QTime, QTimer, Qt, QEvent, QDir, QEvent
-
+from logger import Logger
+import logging
 
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
@@ -46,6 +47,9 @@ class MainWindow(QMainWindow):
         # USE CUSTOM TITLE BAR | USE AS "False" FOR MAC OR LINUX
         # ///////////////////////////////////////////////////////////////
         Settings.ENABLE_CUSTOM_TITLE_BAR = True
+
+        # Logger
+        self.log = Logger("Demo_Error", level=logging.INFO)
 
         # APP NAME
         # ///////////////////////////////////////////////////////////////
@@ -179,6 +183,11 @@ class MainWindow(QMainWindow):
         # self.timer.setSingleShot(True)
         # self.timer.timeout.connect(self.onTimeout)
 
+        # connect to error handler for debug message
+        self.player2.errorOccurred.connect(self.handle_error1) 
+
+
+
 
     # BUTTONS CLICK
     # Post here your functions for clicked buttons
@@ -229,6 +238,10 @@ class MainWindow(QMainWindow):
             fileName, flt = QFileDialog.getOpenFileName(self, title, curPath, filt)
             if fileName == "":
                 return "no files selected"
+            # extra files (Just for Demo and not recommended for illustration via this trick)
+            fileName2 = curPath + "/videos/EDVR_1.mp4"
+            fileName3 = curPath + "/videos/TCNet_1.mp4"
+            fileName4 = curPath + "/videos/KSNet_1.mp4"
             # label name
             self.ui.videolabel_1.setText("LRVideo")
             self.ui.videolabel_2.setText("Model_EDVR")
@@ -241,18 +254,21 @@ class MainWindow(QMainWindow):
             self.ui.lineEdit.setText(baseName)
             # play media
             media = QUrl.fromLocalFile(fileName)
+            media2 = QUrl.fromLocalFile(fileName2)
+            media3 = QUrl.fromLocalFile(fileName3)
+            media4 = QUrl.fromLocalFile(fileName4)
             # Warning: it's not recommended to use different audio outputs for different media players, which is too noisy.
             self.player1.setAudioOutput(self.audioOutput1)
             self.player1.setSource(media)
             self.player1.play()
             self.player2.setAudioOutput(self.audioOutput2)
-            self.player2.setSource(media)
+            self.player2.setSource(media2)
             self.player2.play()
             self.player3.setAudioOutput(self.audioOutput3)
-            self.player3.setSource(media)
+            self.player3.setSource(media3)
             self.player3.play()
             self.player4.setAudioOutput(self.audioOutput4)
-            self.player4.setSource(media)
+            self.player4.setSource(media4)
             self.player4.play()
         if btnName == "btn_save":
             print("Save BTN clicked!")
@@ -396,10 +412,18 @@ class MainWindow(QMainWindow):
         if event.buttons() == Qt.RightButton:
             print('Mouse click: RIGHT CLICK')
 
+    # Logger
+    def handle_error1(self, error):
+        error_msg = self.player1.errorString()
+        self.log.error(f"Error message: {error_msg}")
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon("icon.ico"))
     window = MainWindow()
+    
+    # Logger
+    # log.info("This is a message.")
     sys.exit(app.exec())
 
 
