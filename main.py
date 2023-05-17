@@ -54,7 +54,7 @@ class MainWindow(QMainWindow):
         # APP NAME
         # ///////////////////////////////////////////////////////////////
         title = "BJTU_VSR_Demo - Modern GUI via PyDracula"
-        description = "BJTU_VSR_Demo - Modern GUI via PyDracula"
+        description = "帧间连续性学习的视频超分算法-演示系统"
         # APPLY TEXTS
         self.setWindowTitle(title)
         widgets.titleRightInfo.setText(description)
@@ -74,10 +74,12 @@ class MainWindow(QMainWindow):
         # BUTTONS CLICK
         # ///////////////////////////////////////////////////////////////
         # event filter installation
+        self.ui.videoWidget_0.installEventFilter(self)
         self.ui.videoWidget_1.installEventFilter(self)
         self.ui.videoWidget_2.installEventFilter(self)
         self.ui.videoWidget_3.installEventFilter(self)
         self.ui.videoWidget_4.installEventFilter(self)
+        self.ui.videoWidget_5.installEventFilter(self)
 
         # Connection with slot and signal (not only LEFT MENUS)
         widgets.btn_home.clicked.connect(self.buttonClick)
@@ -261,8 +263,8 @@ class MainWindow(QMainWindow):
             if fileName == "":
                 return "no files selected"
             # extra files (Just for Demo and not recommended for illustration via this trick)
-            fileName0 = curPath + "/videos/HR_Result000.mp4"
-            fileName1 = curPath + "/videos/LR_Result000.mp4"
+            fileName0 = curPath + "/videos/LR_Result000.mp4"
+            fileName1 = curPath + "/videos/HR_Result000.mp4"
             fileName2 = curPath + "/videos/BasicVSR_Result000.mp4"
             fileName3 = curPath + "/videos/TCNet_Result000.mp4"
             fileName4 = curPath + "/videos/KSNet_Result000.mp4"
@@ -360,6 +362,8 @@ class MainWindow(QMainWindow):
     # ///////////////////////////////////////////////////////////////
     # VIDEO PALYER EVENTS
     def closeEvent(self, event):
+        if (self.player0.playbackState() == QMediaPlayer.PlaybackState.PlayingState):
+            self.player0.stop()
         if (self.player1.playbackState() == QMediaPlayer.PlaybackState.PlayingState):
             self.player1.stop()
         if (self.player2.playbackState() == QMediaPlayer.PlaybackState.PlayingState):
@@ -368,9 +372,29 @@ class MainWindow(QMainWindow):
             self.player3.stop()
         if (self.player4.playbackState() == QMediaPlayer.PlaybackState.PlayingState):
             self.player4.stop()
+        if (self.player5.playbackState() == QMediaPlayer.PlaybackState.PlayingState):
+            self.player5.stop()
 
     def eventFilter(self, watched, event):
         # Mouse single click and double click events
+        # video_0
+        if (watched == self.ui.videoWidget_0):
+            # left click for pause and for play
+            if (event.type() == QEvent.MouseButtonPress and event.buttons() == Qt.LeftButton):
+                if (self.player0.playbackState() == QMediaPlayer.PlaybackState.PlayingState):
+                    self.player0.pause()
+                else:
+                    self.player0.play()
+            # double click for fullscreen
+            elif (event.type() == QEvent.MouseButtonDblClick):
+                if (self.ui.videoWidget_0.isFullScreen()):
+                    self.ui.videoWidget_0.setFullScreen(False)
+                else:
+                    self.ui.videoWidget_0.setFullScreen(True)
+            elif (event.type() == QEvent.Type.KeyPress):
+                if (event.key() == Qt.Key_Escape):
+                    if (self.ui.videoWidget_0.isFullScreen()):
+                        self.ui.videoWidget_0.setFullScreen(False)
         # video_1
         if (watched == self.ui.videoWidget_1):
             # left click for pause and for play
@@ -437,6 +461,22 @@ class MainWindow(QMainWindow):
                 if (event.key() == Qt.Key_Escape):
                     if (self.ui.videoWidget_4.isFullScreen()):
                         self.ui.videoWidget_4.setFullScreen(False)  
+        # video_5
+        if (watched == self.ui.videoWidget_5):
+            if (event.type() == QEvent.MouseButtonPress and event.buttons() == Qt.LeftButton):
+                if (self.player5.playbackState() == QMediaPlayer.PlaybackState.PlayingState):
+                    self.player5.pause()
+                else:
+                    self.player5.play()
+            elif (event.type() == QEvent.MouseButtonDblClick):
+                if (self.ui.videoWidget_5.isFullScreen()):
+                    self.ui.videoWidget_5.setFullScreen(False)
+                else:
+                    self.ui.videoWidget_5.setFullScreen(True)
+            elif (event.type() == QEvent.Type.KeyPress):
+                if (event.key() == Qt.Key_Escape):
+                    if (self.ui.videoWidget_5.isFullScreen()):
+                        self.ui.videoWidget_5.setFullScreen(False)  
         return super().eventFilter(watched, event)
     
     # Timer to control singel and double click #TODO
