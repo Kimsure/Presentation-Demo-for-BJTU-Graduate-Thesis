@@ -2096,6 +2096,37 @@ background-repeat: no-repeat;</string>
                                 <number>0</number>
                                </property>
                                <item>
+                                <layout class="QVBoxLayout" name="verticalLayout_200" stretch="0,0,0">
+                                 <item>
+                                  <widget class="QVideoWidget" name="videWidget_0" native="true">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>260</width>
+                                     <height>180</height>
+                                    </size>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QSlider" name="Slider0">
+                                   <property name="orientation">
+                                    <enum>Qt::Horizontal</enum>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item alignment="Qt::AlignHCenter">
+                                  <widget class="QLabel" name="videolabel_0">
+                                   <property name="text">
+                                    <string>Low-Resolution</string>
+                                   </property>
+                                   <property name="alignment">
+                                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </item>
+                               <item>
                                 <layout class="QVBoxLayout" name="verticalLayout_21">
                                  <property name="sizeConstraint">
                                   <enum>QLayout::SetDefaultConstraint</enum>
@@ -2104,7 +2135,7 @@ background-repeat: no-repeat;</string>
                                   <widget class="QVideoWidget" name="videoWidget_1" native="true">
                                    <property name="minimumSize">
                                     <size>
-                                     <width>392</width>
+                                     <width>260</width>
                                      <height>180</height>
                                     </size>
                                    </property>
@@ -2120,7 +2151,7 @@ background-repeat: no-repeat;</string>
                                  <item alignment="Qt::AlignHCenter">
                                   <widget class="QLabel" name="videolabel_1">
                                    <property name="text">
-                                    <string>Input</string>
+                                    <string>High-Resolution</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2132,7 +2163,7 @@ background-repeat: no-repeat;</string>
                                   <widget class="QVideoWidget" name="videoWidget_2" native="true">
                                    <property name="minimumSize">
                                     <size>
-                                     <width>392</width>
+                                     <width>260</width>
                                      <height>180</height>
                                     </size>
                                    </property>
@@ -2148,7 +2179,7 @@ background-repeat: no-repeat;</string>
                                  <item alignment="Qt::AlignHCenter">
                                   <widget class="QLabel" name="videolabel_2">
                                    <property name="text">
-                                    <string>Model_1</string>
+                                    <string>BasicVSR</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2167,7 +2198,7 @@ background-repeat: no-repeat;</string>
                                   <widget class="QVideoWidget" name="videoWidget_3" native="true">
                                    <property name="minimumSize">
                                     <size>
-                                     <width>392</width>
+                                     <width>260</width>
                                      <height>180</height>
                                     </size>
                                    </property>
@@ -2183,7 +2214,7 @@ background-repeat: no-repeat;</string>
                                  <item alignment="Qt::AlignHCenter">
                                   <widget class="QLabel" name="videolabel_3">
                                    <property name="text">
-                                    <string>Model_2</string>
+                                    <string>TCNet</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2195,7 +2226,7 @@ background-repeat: no-repeat;</string>
                                   <widget class="QVideoWidget" name="videoWidget_4" native="true">
                                    <property name="minimumSize">
                                     <size>
-                                     <width>392</width>
+                                     <width>260</width>
                                      <height>180</height>
                                     </size>
                                    </property>
@@ -2211,7 +2242,35 @@ background-repeat: no-repeat;</string>
                                  <item alignment="Qt::AlignHCenter">
                                   <widget class="QLabel" name="videolabel_4">
                                    <property name="text">
-                                    <string>Model_3</string>
+                                    <string>KSNet</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </item>
+                               <item>
+                                <layout class="QVBoxLayout" name="verticalLayout_25">
+                                 <item>
+                                  <widget class="QVideoWidget" name="videoWidget_5" native="true">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>260</width>
+                                     <height>180</height>
+                                    </size>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QSlider" name="Slider5">
+                                   <property name="orientation">
+                                    <enum>Qt::Horizontal</enum>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item alignment="Qt::AlignHCenter">
+                                  <widget class="QLabel" name="videolabel_5">
+                                   <property name="text">
+                                    <string>MCRNet</string>
                                    </property>
                                   </widget>
                                  </item>

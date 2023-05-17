@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainACyUWK.ui'
+## Form generated from reading UI file 'mainlfpZAP.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.5.0
 ##
@@ -20,7 +20,7 @@ from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
     QLabel, QLayout, QLineEdit, QMainWindow,
     QPushButton, QSizePolicy, QSlider, QStackedWidget,
     QTextEdit, QVBoxLayout, QWidget)
-from .resources_rc import *
+import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -1142,12 +1142,35 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.horizontalLayout_6.setSizeConstraint(QLayout.SetDefaultConstraint)
         self.horizontalLayout_6.setContentsMargins(-1, -1, 0, -1)
+        self.verticalLayout_200 = QVBoxLayout()
+        self.verticalLayout_200.setObjectName(u"verticalLayout_200")
+        self.videoWidget_0 = QVideoWidget(self.row_2)
+        self.videoWidget_0.setObjectName(u"videoWidget_0")
+        self.videoWidget_0.setMinimumSize(QSize(260, 180))
+
+        self.verticalLayout_200.addWidget(self.videoWidget_0)
+
+        self.Slider0 = QSlider(self.row_2)
+        self.Slider0.setObjectName(u"Slider0")
+        self.Slider0.setOrientation(Qt.Horizontal)
+
+        self.verticalLayout_200.addWidget(self.Slider0)
+
+        self.videolabel_0 = QLabel(self.row_2)
+        self.videolabel_0.setObjectName(u"videolabel_0")
+        self.videolabel_0.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+
+        self.verticalLayout_200.addWidget(self.videolabel_0, 0, Qt.AlignHCenter)
+
+
+        self.horizontalLayout_6.addLayout(self.verticalLayout_200)
+
         self.verticalLayout_21 = QVBoxLayout()
         self.verticalLayout_21.setObjectName(u"verticalLayout_21")
         self.verticalLayout_21.setSizeConstraint(QLayout.SetDefaultConstraint)
         self.videoWidget_1 = QVideoWidget(self.row_2)
         self.videoWidget_1.setObjectName(u"videoWidget_1")
-        self.videoWidget_1.setMinimumSize(QSize(392, 180))
+        self.videoWidget_1.setMinimumSize(QSize(260, 180))
 
         self.verticalLayout_21.addWidget(self.videoWidget_1)
 
@@ -1169,7 +1192,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_22.setObjectName(u"verticalLayout_22")
         self.videoWidget_2 = QVideoWidget(self.row_2)
         self.videoWidget_2.setObjectName(u"videoWidget_2")
-        self.videoWidget_2.setMinimumSize(QSize(392, 180))
+        self.videoWidget_2.setMinimumSize(QSize(260, 180))
 
         self.verticalLayout_22.addWidget(self.videoWidget_2)
 
@@ -1197,7 +1220,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_23.setObjectName(u"verticalLayout_23")
         self.videoWidget_3 = QVideoWidget(self.row_2)
         self.videoWidget_3.setObjectName(u"videoWidget_3")
-        self.videoWidget_3.setMinimumSize(QSize(392, 180))
+        self.videoWidget_3.setMinimumSize(QSize(260, 180))
 
         self.verticalLayout_23.addWidget(self.videoWidget_3)
 
@@ -1219,7 +1242,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_24.setObjectName(u"verticalLayout_24")
         self.videoWidget_4 = QVideoWidget(self.row_2)
         self.videoWidget_4.setObjectName(u"videoWidget_4")
-        self.videoWidget_4.setMinimumSize(QSize(392, 180))
+        self.videoWidget_4.setMinimumSize(QSize(260, 180))
 
         self.verticalLayout_24.addWidget(self.videoWidget_4)
 
@@ -1236,6 +1259,28 @@ class Ui_MainWindow(object):
 
 
         self.horizontalLayout_7.addLayout(self.verticalLayout_24)
+
+        self.verticalLayout_25 = QVBoxLayout()
+        self.verticalLayout_25.setObjectName(u"verticalLayout_25")
+        self.videoWidget_5 = QVideoWidget(self.row_2)
+        self.videoWidget_5.setObjectName(u"videoWidget_5")
+        self.videoWidget_5.setMinimumSize(QSize(260, 180))
+
+        self.verticalLayout_25.addWidget(self.videoWidget_5)
+
+        self.Slider5 = QSlider(self.row_2)
+        self.Slider5.setObjectName(u"Slider5")
+        self.Slider5.setOrientation(Qt.Horizontal)
+
+        self.verticalLayout_25.addWidget(self.Slider5)
+
+        self.videolabel_5 = QLabel(self.row_2)
+        self.videolabel_5.setObjectName(u"videolabel_5")
+
+        self.verticalLayout_25.addWidget(self.videolabel_5, 0, Qt.AlignHCenter)
+
+
+        self.horizontalLayout_7.addLayout(self.verticalLayout_25)
 
 
         self.verticalLayout_19.addLayout(self.horizontalLayout_7)
@@ -1463,15 +1508,17 @@ class Ui_MainWindow(object):
         self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Type here", None))
         self.labelVersion_3.setText(QCoreApplication.translate("MainWindow", u"The chosen media file", None))
         self.btn_filechooser.setText(QCoreApplication.translate("MainWindow", u"Open", None))
-        self.videolabel_1.setText(QCoreApplication.translate("MainWindow", u"Input", None))
-        self.videolabel_2.setText(QCoreApplication.translate("MainWindow", u"Model_1", None))
-        self.videolabel_3.setText(QCoreApplication.translate("MainWindow", u"Model_2", None))
-        self.videolabel_4.setText(QCoreApplication.translate("MainWindow", u"Model_3", None))
+        self.videolabel_0.setText(QCoreApplication.translate("MainWindow", u"Low-Resolution", None))
+        self.videolabel_1.setText(QCoreApplication.translate("MainWindow", u"High-Resolution", None))
+        self.videolabel_2.setText(QCoreApplication.translate("MainWindow", u"BasicVSR", None))
+        self.videolabel_3.setText(QCoreApplication.translate("MainWindow", u"TCNet", None))
+        self.videolabel_4.setText(QCoreApplication.translate("MainWindow", u"KSNet", None))
+        self.videolabel_5.setText(QCoreApplication.translate("MainWindow", u"MCRNet", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"NEW PAGE TEST", None))
         self.btn_theme.setText(QCoreApplication.translate("MainWindow", u"ThemeChange", None))
         self.btn_print.setText(QCoreApplication.translate("MainWindow", u"Print", None))
         self.btn_logout.setText(QCoreApplication.translate("MainWindow", u"Logout", None))
-        self.creditsLabel.setText(QCoreApplication.translate("MainWindow", u"By: Shuo Jin", None))
-        self.version.setText(QCoreApplication.translate("MainWindow", u"v0.1", None))
+        self.creditsLabel.setText(QCoreApplication.translate("MainWindow", u"By: Wanderson M. Pimenta", None))
+        self.version.setText(QCoreApplication.translate("MainWindow", u"v1.0.3", None))
     # retranslateUi
 

@@ -137,22 +137,35 @@ class MainWindow(QMainWindow):
         # Video Player and Dir./
         # ///////////////////////////////////////////////////////////////
         self.curPath = QDir.currentPath()
+        self.player0 = QMediaPlayer(self)
         self.player1 = QMediaPlayer(self)
         self.player2 = QMediaPlayer(self)
         self.player3 = QMediaPlayer(self)
         self.player4 = QMediaPlayer(self)
+        self.player5 = QMediaPlayer(self)
         # Warning: it's not recommended to use different audio outputs for different media players, which is too noisy.
+        self.audioOutput0 = QAudioOutput()
         self.audioOutput1 = QAudioOutput()
         self.audioOutput2 = QAudioOutput()
         self.audioOutput3 = QAudioOutput()
         self.audioOutput4 = QAudioOutput()
+        self.audioOutput5 = QAudioOutput()
         # Video Player ouput location
+        self.player0.setVideoOutput(self.ui.videoWidget_0)
+        self.player1.setVideoOutput(self.ui.videoWidget_1)
         self.player1.setVideoOutput(self.ui.videoWidget_1)
         self.player2.setVideoOutput(self.ui.videoWidget_2)
         self.player3.setVideoOutput(self.ui.videoWidget_3)
         self.player4.setVideoOutput(self.ui.videoWidget_4)
+        self.player5.setVideoOutput(self.ui.videoWidget_5)
 
         # Video Player Sliders
+        # Slider_0
+        self.ui.Slider0.setMinimum(0)
+        self.ui.Slider0.setMinimum(1000)
+        self.ui.Slider0.sliderMoved.connect(self.setPosition0)
+        self.player0.positionChanged.connect(self.update_position0)
+        self.player0.durationChanged.connect(self.update_duration0)
         # Slider_1
         self.ui.Slider1.setMinimum(0)
         self.ui.Slider1.setMinimum(1000)
@@ -177,6 +190,12 @@ class MainWindow(QMainWindow):
         self.ui.Slider4.sliderMoved.connect(self.setPosition4)
         self.player4.positionChanged.connect(self.update_position4)
         self.player4.durationChanged.connect(self.update_duration4)
+        # Slider_5
+        self.ui.Slider5.setMinimum(0)
+        self.ui.Slider5.setMinimum(1000)
+        self.ui.Slider5.sliderMoved.connect(self.setPosition5)
+        self.player5.positionChanged.connect(self.update_position5)
+        self.player5.durationChanged.connect(self.update_duration5)
         # QTimer to control the single click and double click for different signals #TODO
         # self.timer = QTimer(self)
         # self.timer.setInterval(250)
@@ -242,27 +261,37 @@ class MainWindow(QMainWindow):
             if fileName == "":
                 return "no files selected"
             # extra files (Just for Demo and not recommended for illustration via this trick)
-            fileName2 = curPath + "/videos/Result000_LR_x264.mp4"
+            fileName0 = curPath + "/videos/HR_Result000.mp4"
+            fileName1 = curPath + "/videos/LR_Result000.mp4"
+            fileName2 = curPath + "/videos/BasicVSR_Result000.mp4"
             fileName3 = curPath + "/videos/TCNet_Result000.mp4"
             fileName4 = curPath + "/videos/KSNet_Result000.mp4"
+            fileName5 = curPath + "/videos/TCNet_Result000.mp4"
             # label name
-            self.ui.videolabel_1.setText("LRVideo")
-            self.ui.videolabel_2.setText("Model_EDVR")
-            self.ui.videolabel_3.setText("Model_TCNet")
-            self.ui.videolabel_4.setText("Model_KSNet")
+            self.ui.videolabel_0.setText("Low-Resolution Video")
+            self.ui.videolabel_1.setText("High-Resolution Video")
+            self.ui.videolabel_2.setText("Model_BasicVSR(31.42/0.8909)")
+            self.ui.videolabel_3.setText("Model_TCNet(31.82/0.9002)")
+            self.ui.videolabel_4.setText("Model_KSNet(31.19/0.8815)")
+            self.ui.videolabel_5.setText("Model_MCRNet(31.86/0.9013)")
             # fileinfos and names
             fileInfo = QFileInfo(fileName)
             baseName = fileInfo.fileName()
             self.ui.labelVersion_3.setText(fileName)
             self.ui.lineEdit.setText(baseName)
             # play media
-            media = QUrl.fromLocalFile(fileName)
+            media0 = QUrl.fromLocalFile(fileName0)
+            media1 = QUrl.fromLocalFile(fileName1)
             media2 = QUrl.fromLocalFile(fileName2)
             media3 = QUrl.fromLocalFile(fileName3)
             media4 = QUrl.fromLocalFile(fileName4)
+            media5 = QUrl.fromLocalFile(fileName5)
             # Warning: it's not recommended to use different audio outputs for different media players, which is too noisy.
+            self.player0.setAudioOutput(self.audioOutput0)
+            self.player0.setSource(media0)
+            self.player0.play()
             self.player1.setAudioOutput(self.audioOutput1)
-            self.player1.setSource(media)
+            self.player1.setSource(media1)
             self.player1.play()
             self.player2.setAudioOutput(self.audioOutput2)
             self.player2.setSource(media2)
@@ -273,6 +302,9 @@ class MainWindow(QMainWindow):
             self.player4.setAudioOutput(self.audioOutput4)
             self.player4.setSource(media4)
             self.player4.play()
+            self.player5.setAudioOutput(self.audioOutput5)
+            self.player5.setSource(media5)
+            self.player5.play()
         if btnName == "btn_save":
             print("Save BTN clicked!")
         # PRINT BTN NAME
@@ -280,6 +312,13 @@ class MainWindow(QMainWindow):
 
     # Video contentes position and Slider:
     # ///////////////////////////////////////////////////////////////
+    # Video_0
+    def setPosition0(self, position):
+        self.player0.setPosition(position * 1000)
+    def update_position0(self, position):
+        self.ui.Slider0.setValue(position / 1000)
+    def update_duration0(self, duration):
+        self.ui.Slider0.setRange(0, duration / 1000)
     # Video_1
     def setPosition1(self, position):
         self.player1.setPosition(position * 1000)
@@ -308,6 +347,14 @@ class MainWindow(QMainWindow):
         self.ui.Slider4.setValue(position / 1000)
     def update_duration4(self, duration):
         self.ui.Slider4.setRange(0, duration / 1000)
+    # Video_5
+    def setPosition5(self, position):
+        self.player5.setPosition(position * 1000)
+    def update_position5(self, position):
+        self.ui.Slider5.setValue(position / 1000)
+    def update_duration5(self, duration):
+        self.ui.Slider5.setRange(0, duration / 1000)
+
 
     # EVENTS:
     # ///////////////////////////////////////////////////////////////
