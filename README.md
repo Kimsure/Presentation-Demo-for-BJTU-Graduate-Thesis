@@ -1,4 +1,4 @@
-# Beijing Jiaotong University Graduate Thesis/Design Presentation System
+# BJTU Graduate Thesis/Design Presentation System
 
 > ## This Project is totally based on PyDracula. Consider Donate (Gumroad): https://gum.co/mHsRC
 > ### Install
@@ -10,28 +10,28 @@
 > 
 > 🔗 **Bilibili**: https://www.bilibili.com/video/BV1ww411Z7Np/?spm_id_from=333.337.search-card.all.click&vd_source=1e0a15618f3d86b448a0be782b0ea479
 
-# Multiple Themes
+## Multiple Themes
 ![PyDracula_Default_Dark](https://user-images.githubusercontent.com/60605512/112993874-0b647700-9140-11eb-8670-61322d70dbe3.png)
 ![PyDracula_Light](https://user-images.githubusercontent.com/60605512/112993918-18816600-9140-11eb-837c-e7a7c3d2b05e.png)
 
 
-# Running
+## Running
 > Inside your preferred terminal run the commands below depending on your system, remembering before installing Python 3.9> and PySide6 "pip install PySide6".
-> ## **Windows**:
+> ### **Windows**:
 ```console
 python main.py
 ```
-> ## **MacOS and Linux**:
+> ### **MacOS and Linux**:
 ```console
 python3 main.py
 ```
-# Compiling
-> ## **Windows**:
+## Compiling
+> ### **Windows**:
 ```console
 python setup.py build
 ```
 
-# Project Files And Folders
+## Project Files And Folders
 > **main.py**: application initialization file.
 
 > **main.ui**: Qt Designer project.
@@ -57,7 +57,7 @@ After expoting in .py and change the line "import resources_rc" to "from. Resouc
 
 > **images/**: put all your images and icons here before converting to Python (resources_re.py) ```pyside6-rcc resources.qrc -o resources_rc.py```.
 
-# Other Impressive Designs Using PySide
+## Other Impressive Designs Using PySide
 
 **Explore the projects available for your presentation demo.**
 > YoloSide6: https://github.com/Jai-wei/YOLOv8-PySide6-GUI
