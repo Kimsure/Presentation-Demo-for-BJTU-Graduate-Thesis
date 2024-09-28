@@ -11,9 +11,7 @@
 > 🔗 **Bilibili**: https://www.bilibili.com/video/BV1ww411Z7Np/?spm_id_from=333.337.search-card.all.click&vd_source=1e0a15618f3d86b448a0be782b0ea479
 
 ## Multiple Themes
-![PyDracula_Default_Dark](https://user-images.githubusercontent.com/60605512/112993874-0b647700-9140-11eb-8670-61322d70dbe3.png)
-![PyDracula_Light](https://user-images.githubusercontent.com/60605512/112993918-18816600-9140-11eb-837c-e7a7c3d2b05e.png)
-
+<img width="1050" alt="image" src="https://github.com/user-attachments/assets/577c1f06-2c5f-4043-ace8-3c1626d39514">
 
 ## Running
 > Inside your preferred terminal run the commands below depending on your system, remembering before installing Python 3.9> and PySide6 "pip install PySide6".
