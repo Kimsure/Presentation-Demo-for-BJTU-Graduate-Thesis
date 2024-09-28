@@ -1,30 +1,19 @@
-# PyDracula - Modern GUI PySide6 / PyQt6
-# 
+# Beijing Jiaotong University Graduate Thesis/Design Presentation System
 
-> ## :gift: **//// DONATE ////**
-> ## 🔗 Donate (Gumroad): https://gum.co/mHsRC
-> This interface is free for any use, but if you are going to use it commercially, consider helping to maintain this project and others with a donation by Gumroado at the link above. This helps to keep this and other projects active.
-
-> **Warning**: this project was created using PySide6 and Python 3.9, using previous versions can cause compatibility problems.
-
-# YouTube - Presentation And Tutorial
-Presentation and tutorial video with the main functions of the user interface.
-> 🔗 https://youtu.be/9DnaHg4M_AM
+> ## This Project is totally based on PyDracula. Consider Donate (Gumroad): https://gum.co/mHsRC
+> ### Install
+> - Python==3.9
+> - Pyside6
+> **Warning**: using previous versions can cause compatibility problems.
+> ### Tutorial
+> 🔗 **Yotube**: https://youtu.be/9DnaHg4M_AM
+> 
+> 🔗 **Bilibili**: https://www.bilibili.com/video/BV1ww411Z7Np/?spm_id_from=333.337.search-card.all.click&vd_source=1e0a15618f3d86b448a0be782b0ea479
 
 # Multiple Themes
 ![PyDracula_Default_Dark](https://user-images.githubusercontent.com/60605512/112993874-0b647700-9140-11eb-8670-61322d70dbe3.png)
 ![PyDracula_Light](https://user-images.githubusercontent.com/60605512/112993918-18816600-9140-11eb-837c-e7a7c3d2b05e.png)
 
-# High DPI
-> Qt Widgets is an old technology and does not have a good support for high DPI settings, making these images look distorted when your system has DPI applied above 100%.
-You can minimize this problem using a workaround by applying this code below in "main.py" just below the import of the Qt modules.
-```python
-# ADJUST QT FONT DPI FOR HIGHT SCALE
-# ///////////////////////////////////////////////////////////////
-from modules import *
-from widgets import *
-os.environ["QT_FONT_DPI"] = "96"
-```
 
 # Running
 > Inside your preferred terminal run the commands below depending on your system, remembering before installing Python 3.9> and PySide6 "pip install PySide6".
@@ -68,10 +57,16 @@ After expoting in .py and change the line "import resources_rc" to "from. Resouc
 
 > **images/**: put all your images and icons here before converting to Python (resources_re.py) ```pyside6-rcc resources.qrc -o resources_rc.py```.
 
-# Projects Created Using PyDracula
-**See the projects that were created using PyDracula.**
-> To participate create a "Issue" with the name beginning with "#pydracula_project", leaving the link of your project on Github, name of the creator and what is its functionality. Your project will be added and this list will be deleted from "Issue".
-**Malicious programs will not be added**!
+# Other Impressive Designs Using PySide
+
+**Explore the projects available for your presentation demo.**
+> YoloSide6: https://github.com/Jai-wei/YOLOv8-PySide6-GUI
+> 
+> FluentDesign: https://qfluentwidgets.com/zh/
+>
+> FluentUI: https://github.com/zhuzichu520/PySide6-FluentUI-QML
+>
+> SiliconUI: https://github.com/ChinaIceF/PyQt-SiliconUI
 
 
 
